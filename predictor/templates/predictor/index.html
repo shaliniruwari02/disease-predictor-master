@@ -1,0 +1,364 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease-Predictor</title>
+
+    <link href="{% static 'predictor/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'predictor/index.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+        rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+
+    <script src="https://kit.fontawesome.com/4303a1479a.js" crossorigin="anonymous"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <section class="header">
+        <nav>
+            <a href="#">Disease-Predictor</a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#predict">Predict</a></li>
+                    <li><a href="#how_to_use">How to use</a></li>
+                    <li><a href="#why_this">Why this?</a></li>
+                    <li><a href="#about_us">About us</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    </section>
+<!--
+    Diseases: 
+Kidney
+Breast Cancer
+Heart
+Liver
+Diabetes -->
+
+<!-- -----------------------HOME SECTION--------------------- -->
+<section class="home">
+            <div class="home-content">
+                <div class="text1">Welcome to our</div>
+                <div class="text2">Disease-Predictor</div>
+            </div>
+</section>
+
+<div id="predict">
+    <h4>Predict</h4>
+    <div class="under-line"></div>
+    <div id="selector">
+        <select name="select_disease" id="disease_slctr">
+            <option value="" selected>Select Disease</option>
+            <option value="kidney">Kidney</option>
+            <option value="breast_cancer">Breast Cancer</option>
+            <option value="heart">Heart</option>
+            <option value="liver">Liver</option>
+            <option value="diabetes">Diabetes</option>
+        </select>
+    </div>
+    <form id="kidney_data">
+        <div class="inside_form">
+            <h3>Kidney Form</h3>
+            <div>
+                <label for="age">Age: </label>
+                <input type="number" min="5" max="130" required name="age" id="age">
+            </div>
+            <div>
+                <label for="gender">Gender: </label>
+                <select name="gender" id="gender" class="selectop">
+                    <option value="" selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="notell">Choose not to tell</option>
+                </select>
+            </div>
+            <div>
+                <label for="bloodgrp">Blood Group: </label>
+                <select name="bloodgrp" id="bloodgrp" class="selectop">
+                    <option value="" selected>Select Blood Group</option>
+                    <option value="apos">A+</option>
+                    <option value="aneg">A-</option>
+                    <option value="bpos">B+</option>
+                    <option value="bneg">B-</option>
+                    <option value="opos">O+</option>
+                    <option value="oneg">O-</option>
+                    <option value="abpos">AB+</option>
+                    <option value="abneg">AB-</option>
+                </select>
+            </div>
+            <div>
+                <label for="bp">Blood Pressure: </label>
+                <input type="number" min="20" max="350" required name="bp" id="bp">
+            </div>
+            <div>
+                <label for="bsl">Blood Sugar Level: </label>
+                <input type="number" required name="bsl" id="bsl">
+            </div>
+            <div>
+                <label for="sg">Specific Gravity: </label>
+                <input type="number" required name="sg" id="sg" step="0.01">
+            </div>
+            <div>
+                <label for="alb">Albumin: </label>
+                <input type="number" required name="alb" id="alb" step="0.1">
+            </div>
+            <div>
+                <label for="rbc">Rbc Count: </label>
+                <input type="number" required name="rbc" id="rbc" step="0.1">
+            </div>
+            <div>
+                <label for="pcc">Pus Cell Count: </label>
+                <input type="number" required name="pcc" id="pcc">
+            </div>
+            <div>
+                <label for="pccs">Pus Cell Clumps: </label>
+                <input type="number" required name="pccs" id="pccs">
+            </div>
+            <div>
+                <!-- <input type="submit" value="Predict" class="btn btn-md btn-primary"> -->
+                <input type="submit" class="submitbtn" id="form_kidney">
+            </div>
+        </div>
+    </form>
+    
+    <form id="breast_cancer_data">
+        <h3>Breast Cancer Form</h3>
+        <!-- Data for Breast Cancer -->
+        <div>
+            <input type="submit" class="submitbtn" id="form_breast_cancer" disabled>
+        </div>
+    </form>
+
+    <form id="heart_data">
+        <h3>Heart Form</h3>
+        <div>
+            <input type="submit" class="submitbtn" id="form_heart" disabled>
+        </div>
+    </form>
+
+    <form id="liver_data">
+        <h3>Liver Form</h3>
+        <div>
+            <input type="submit" class="submitbtn" id="form_liver" disabled>
+        </div>
+    </form>
+
+    <form id="diabetes_data">
+        <div class="inside_form">
+            <h3>Diabetes Form</h3>
+            <div>
+                <label for="age_d">Age: </label>
+                <input type="number" min="5" max="130" required name="age_d" id="age_d">
+            </div>
+            <div>
+                <label for="gender_d">Gender: </label>
+                <select name="gender_d" id="gender_d" class="selectop">
+                    <option value="" selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="notell">Choose not to tell</option>
+                </select>
+            </div>
+            <div id="pregnancy_div">
+                    <label for="pregnancy">Pregnant: </label>
+                    <select name="pregnancy" id="pregnancy" class="selectop">
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                    </select>
+                    <!-- <label for="pregnant">Yes</label>
+                    <input type="radio" name="pregnant" id="pregnant" value="yes">
+                    <label for="not_pregnant">No</label>
+                    <input type="radio" name="not_pregnant" id="not_pregnant" value="no"> -->
+            </div>
+            <div>
+                <label for="bloodgrp_d">Blood Group: </label>
+                <select name="bloodgrp_d" id="bloodgrp_d" class="selectop">
+                    <option value="" selected>Select Blood Group</option>
+                    <option value="apos">A+</option>
+                    <option value="aneg">A-</option>
+                    <option value="bpos">B+</option>
+                    <option value="bneg">B-</option>
+                    <option value="opos">O+</option>
+                    <option value="oneg">O-</option>
+                    <option value="abpos">AB+</option>
+                    <option value="abneg">AB-</option>
+                </select>
+            </div>
+            <div>
+                <label for="glucose">Glucose: </label>
+                <input type="number" name="glucose" id="glucose" required>
+            </div>
+            <div>
+                <label for="bp_d">Blood Pressure: </label>
+                <input type="number" name="bp" id="bp_d" required>
+            </div>
+            <div>
+                <label for="bmi">BMI: </label>
+                <input type="number" name="bmi" id="bmi" step="0.01" required>
+            </div>
+            <div>
+                <label for="d_pedigree_fxn">Diabetes Pedigree Function: </label>
+                <input type="number" name="d_pedigree_fxn" id="d_pedigree_fxn" required step="0.001">
+            </div>
+            <div>
+                <input type="submit" class="submitbtn" id="form_diabetes">
+            </div>
+        </div>
+    </form>
+    <div id="waiting">
+        <h4>Predicting..<span id="waiting_dot">.</span></h4>
+    </div>
+</div>
+
+<!------------------------------ Predicted Value will be added inside this div(asyn) ------------------------------->
+
+<div id="result"></div>
+
+<!----------------------------------------------------------------------- How to use ------------------------------------------- -->
+<section class="how-to-use" id="how_to_use">
+    <h4>How to Use</h4>
+    <div class="under-line"></div>
+    <div class="row first">
+        <div class="col-column">
+            <h3>Step 1</h3>
+            <p>Select disease.</p>
+        </div>
+
+        <div class="col-column">
+            <h3>Step 2</h3>
+            <p>Enter disease parameters.</p>
+        </div>
+
+        <div class="col-column">
+            <h3>Step 3</h3>
+            <p>Know your chances of having the disease.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ------------------------------------------- why this --------------------------------------- -->
+<section class="why-this" id="why_this">
+    <h4>Why this</h4>
+    <div class="under-line"></div>
+    <div class="outer">
+        <p>Our aim is to provide a precise prediction about the possibility of a disease by analysing the factors related to that disease so that users gets to know about their health condition. 
+            Disease prevention involves actions to reduce or eliminate exposure to risks that might increase the chances that an individual will incur any health problems. 
+            Disease predictor saves time  by predicting the disease possibility so that an individual can get a check-up immediately.</p>
+    </div>
+</section>
+
+<!-- ------------------------- About-Us--------------- -->
+<section class="footer" id="about_us">
+    <h4>About Us</h4>
+    <div class="under-line"></div>
+    <div class="outer">
+    <p>We are a group undergraduate cse students of <a href="https://www.thapar.edu" target="_blank">Thapar Institute of engeeneering and technology, Patiala.</a></p></div>
+    
+    <div class="row">
+        <div class="open-col">
+        <div class="about-col">
+            <img src="{% static 'predictor/images/paras.jpeg' %}" alt="Oops">
+            <div>
+                <h3>Paras Sood</h3>
+                <p>Curious, Collaborative and self motivated individual who is always enthusiastic about learning new
+                    things. Open to new challenges and ready to take ownership of projects to bring them to fruition.
+                    Having good coding skills along with analytical thinking skills</p>
+                    <br>
+                    <h5>Django, Javascript, HTML & CSS, Deployment</h5>
+                    <div class="icons">
+                        <a href="https://www.facebook.com/paras.sood.188/" target="_blank"><i class="class fa fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/paras29sood/" target="_blank"><i
+                                class="class fa fa-instagram"></i></a>
+                        <a href="https://github.com/Paras-Sood" target="_blank"><i class="class fa fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/paras-sood-38034a1b7" target="_blank"><i class="class fa fa-linkedin"></i></a>
+                    </div>
+            </div>
+        </div>
+    
+        <div class="about-col">
+            <img src="{% static 'predictor/images/abhinav.jpg' %}">
+            <div>
+                <h3>Abhinav Bagwari</h3>
+                <p>Self motivated Computer Engineering student with teamwork abilities and great communication skill,looking for an
+                opportunity in the field of Machine Learning to expand my learnings, knowledge, and skills.</p>
+                    
+                <ul>
+                    <li><h5>Visit ---> <a href="https://abhinav-bagwari.github.io/abhinavbagwari/" target="_blank">my portfolio</a></h5></li>
+                </ul>
+                    <br>
+                <h5>ML-Model, HTML & CSS, UI</h5>
+            <div class="icons">
+                <a href="https://m.facebook.com/abhinav.bagwari" target="_blank"><i class="class fa fa-facebook"></i></a>
+                <a href="https://instagram.com/abhi_nav_03?utm_medium=copy_link" target="_blank"><i
+                        class="class fa fa-instagram"></i></a>
+                <a href="https://github.com/abhinav-bagwari" target="_blank"><i class="class fa fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/abhinavbagwari/" target="_blank"><i class="class fa fa-linkedin"></i></a>
+            </div>
+            </div>
+        </div>
+
+        <div class="about-col">
+            <img src="{% static 'predictor/images/aditya.jpeg' %}" alt="Oops">
+            <div>
+                <h3>Aditya Sharotri</h3>
+                <p>Energetic and passionate college student,Forward-thinking individual with refined interpersonal and multitasking skills. Comes with exceptional ability to work and learn at the same time to gain experience and further my knowledge on the system.</p>
+                    <br>
+                <h5>HTML & CSS, Content Creator</h5>
+            <div class="icons">
+                <a href="https://www.facebook.com/aditya.sharotri.7" target="_blank"><i class="class fa fa-facebook"></i></a>
+                <a href="https://instagram.com/adityaaaxo" target="_blank"><i class="class fa fa-instagram"></i></a>
+                <a href="https://github.com/adityaaaxo" target="_blank"><i class="class fa fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/adityasharotri/" target="_blank"><i class="class fa fa-linkedin"></i></a>
+            </div>
+            </div>
+        </div>
+
+        <div class="about-col">
+            <img src="{% static 'predictor/images/tushar.jpeg' %}" alt="Oops">
+            <div>
+                <h3>Tushar Chandana</h3>
+                <p>Dedicated individual willing to assist in all aspects of the organization and management. Performance driven, has exceptional ability to develop valuable and essential ideas</p>
+                    <br>
+                    <h5>HTML & CSS, Content Creator</h5>
+            <div class="icons">
+                <a href="https://www.facebook.com/people/Tushar-Chandna/100009259213022/" target="_blank"><i class="class fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/tusharchandna/?hl=en" target="_blank"><i class="class fa fa-instagram"></i></a>
+                <a href="https://github.com/tusharchandna" target="_blank"><i class="class fa fa-github"></i></a>
+                <a href="https://in.linkedin.com/in/tusharchandna" target="_blank"><i class="class fa fa-linkedin"></i></a>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- ------------------------FeedBack-------------- -->
+<section class="feedback">
+    <div class="begin">
+        <h3>In case of any feedback,you may click<a href="https://docs.google.com/forms/d/e/1FAIpQLSfDFtpHwbnglcX6kAvAXfPMKgA00Gpsyz-HJMDG1Ii3CW735w/viewform?usp=sf_link" target="_blank"> here.</a></h3>
+    </div>
+</section>
+<section class="copyright">
+<p>Copyright &copy; 2021. All rights reserved.</p>
+</section>
+
+<!-- ############------Javascript for Toggle Menu  ############ -->
+<!-- <script src="script.js"></script> -->
+<script src="{% static 'predictor/script.js' %}"></script>
+
+</body>
+</html>

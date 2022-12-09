@@ -1,0 +1,409 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Poppins", "sans-serif";
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .header {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  .header.sticky {
+    background: red;
+  }
+  nav {
+    display: flex;
+    padding: 1% 6%;
+    justify-content: space-between;
+    align-items: center;
+    background: red;
+  }
+  nav a {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  .nav-links {
+    flex: 1;
+    text-align: right;
+  }
+  .nav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+  }
+  .nav-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.2s linear;
+  }
+  .nav-links ul li a:hover {
+    color: blue;
+  }
+  
+  /* icons will be hidden for bigger screen */
+  nav .fa {
+    display: none;
+  }
+  
+  .scroll-up-btn {
+    position: fixed;
+    height: 45px;
+    width: 42px;
+    background: crimson;
+    right: 30px;
+    bottom: 30px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    z-index: 9999;
+    font-size: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  .scroll-up-btn.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  @media screen and (max-width: 950px) {
+    .nav-links ul li {
+      display: block;
+    }
+    .nav-links {
+      position: fixed;
+      background: black;
+      height: 100vh;
+      width: 200px;
+      top: 0;
+      right: -200px;
+      text-align: left;
+      z-index: 2;
+      transition: 1s;
+    }
+    nav .fa {
+      display: block;
+      color: #fff;
+      margin: 10px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .nav-links ul {
+      margin: 30px;
+    }
+  }
+  /* ------------------------HOME SECTION----------------------------- */
+  .home {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+      url(./images/background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  .home-content {
+    font-size: 50px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .home-content .text1 {
+    margin-left: 20px;
+    color: crimson;
+  }
+  
+  @media screen and (max-width: 950px) {
+    .home-content {
+      font-size: 25px;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .home-content {
+      font-size: 20px;
+    }
+  }
+  
+  /* ---------------How to use-------------------------------- */
+  .how-to-use {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+  }
+  .row {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .col-column {
+    flex-basis: 31%;
+    background: #fff3f3;
+    border-radius: 10px;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    border: 2px solid red;
+    color: black;
+    font-size: 20px;
+    font-family: sans-serif;
+  }
+  h3 {
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+  }
+  .col-column:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+  }
+  .col-column p{
+    color: black;
+    font-size: 20px;
+    font-family: sans-serif;
+    line-height: 1.8rem;
+  }
+  @media screen and (max-width: 800px) {
+    .first {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 15px;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 15px;
+    }
+  }
+  
+  /* --------------------------why this ?---------------------- */
+  .why-this {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+  }
+  .under-line {
+    margin: auto;
+    border: 1.5px solid crimson;
+    background: crimson;
+    width: 200px;
+  }
+  h4 {
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .outer {
+    flex-basis: 31%;
+    background: #fff3f3;
+    border-radius: 10px;
+    margin-top: 50px;
+    padding: 20px 12px;
+    box-sizing: border-box;
+  }
+  p {
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+  }
+  
+  /* -----------------------------About Us------------------ */
+  
+  .footer {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+  }
+  
+  .open-col {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+  }
+  .about-col {
+    flex-basis: 44%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+    background: #fff3f3;
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+    border: 2px solid red;
+  }
+  .about-col img {
+    height: 50px;
+    margin: 0 20px 0 5px;
+    border-radius: 50%;
+  }
+  .about-col h3 {
+    margin-top: 15px;
+    text-align: left;
+  }
+  .about-col p {
+    font-weight: 500;
+    color: #111;
+    padding: 0;
+  }
+  .about-col a:hover {
+    color: crimson;
+  }
+  .about-col:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  .icons .fa {
+    font-size: 25px;
+    color: crimson;
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 18px 0;
+    transition: transform 0.2s;
+  }
+  .icons .fa:hover {
+    transform: translateY(-15px);
+  }
+  
+  @media screen and (max-width: 950px) {
+    .open-col {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media screen and (max-width: 550px) {
+    .icons .fa {
+      font-size: 20px;
+      margin: 0 5px;
+    }
+  }
+  .outer p{
+    color: black;
+    font-size: 20px;
+    font-family: sans-serif;
+    line-height: 1.8rem;
+    /* font-weight: bold; */
+  }
+  
+  /* -------------------------------feedback-------------- */
+  .begin a:hover {
+    color: red;
+  }
+  @media screen and (max-width: 600px) {
+    .begin {
+      font-size: 13px;
+    }
+  }
+  
+  /* -------------------------------copyright-------------------- */
+  .copyright {
+    display: flex;
+    justify-content: center;
+  }
+  .copyright p {
+    color: black;
+  }
+  
+  /* -----------------------------Predict------------------------*/
+  #predict{
+      width: 80%;
+      margin: auto;
+      text-align: center;
+      padding-top: 100px;
+  }
+  #selector{
+      padding-top: 20px;
+      margin-top: 40px;
+  }
+  #disease_slctr{
+    background-color: rgb(214, 212, 212);
+    border-color: rgb(214, 212, 212);
+    border: 1px solid transparent;
+    width: 450px;
+    height: 42px;
+    padding: 8px;
+    font-size: 18px;
+    border-radius: .5rem; /* 12px */
+  }
+  .selectop{
+    background-color: white;
+    border-color: rgb(214, 212, 212);
+    border: 1px solid gray;
+    margin: 10px 0;
+    width: 400px;
+    height: 36px;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: .5rem; /* 12px */
+  }
+  input{
+      width: 400px;
+      height: 36px;
+      padding: 4px;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid gray;
+      margin: 10px 0;
+      position: relative;
+      right: 0;
+  }
+  .submitbtn{
+      width: 90px;
+      background-color: #007bff;
+      border-color: #007bff;
+      color: white;
+      user-select: none;
+      border: 1px solid transparent;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: bold;
+      line-height: 1.5;
+      border-radius: .25rem;
+    }
+    .submitbtn:hover{
+      background-color: rgb(0, 57, 226);
+    }
+    .inside_form{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+  /*-----------------------------Waiting----------------------*/
+  @keyframes blink {
+      0%{
+          opacity: 1;
+      }
+      50%{
+          opacity: 1;
+      }
+      100%{
+          opacity: 0;
+      }
+  }
+  #waiting_dot{
+      animation-name: blink;
+      animation-iteration-count: infinite;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+  }
